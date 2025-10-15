@@ -17,6 +17,7 @@
 - [Why LangExtract?](#why-langextract)
 - [Quick Start](#quick-start)
 - [Installation](#installation)
+- [Batch Processing](#batch-processing)
 - [API Key Setup for Cloud Models](#api-key-setup-for-cloud-models)
 - [Adding Custom Model Providers](#adding-custom-model-providers)
 - [Using OpenAI Models](#using-openai-models)
@@ -195,6 +196,42 @@ pip install -e ".[test]"
 docker build -t langextract .
 docker run --rm -e LANGEXTRACT_API_KEY="your-api-key" langextract python your_script.py
 ```
+
+## Batch Processing
+
+**Save 50% on API costs** by processing large document collections with Google's Batch APIs.
+
+LangExtract includes a batch processing module that enables cost-effective large-scale extraction:
+
+```python
+from langextract_batch import UniversalBatchExtractor
+import langextract as lx
+
+# Initialize batch extractor (works with AI Studio or Vertex AI)
+extractor = UniversalBatchExtractor(
+    api_key=os.getenv("GEMINI_API_KEY"),
+    model_id="gemini-2.5-flash",
+    prompt_description="Extract entities...",
+    examples=[...]
+)
+
+# Process thousands of documents at 50% cost
+documents = [{'id': 'doc1', 'text': '...'}, {'id': 'doc2', 'text': '...'}]
+results = extractor.process_documents(documents, batch_name="my_batch")
+```
+
+**Key Features:**
+- 50% cost savings vs real-time API
+- Process millions of documents
+- Automatic checkpointing for large corpora
+- Support for both AI Studio (simple) and Vertex AI (enterprise)
+
+**Installation:**
+```bash
+pip install -e ".[batch]"
+```
+
+For complete documentation, examples, and advanced usage patterns, see [langextract_batch/README.md](langextract_batch/README.md).
 
 ## API Key Setup for Cloud Models
 
