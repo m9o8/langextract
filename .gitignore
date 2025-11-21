@@ -168,3 +168,6 @@ cache/
 # Benchmark results and local environment
 langextract_env/
 benchmarks/benchmark_results
+
+# json key
+gcloud_key.json

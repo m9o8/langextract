@@ -32,6 +32,7 @@ dependencies = [
     "aiohttp>=3.8.0",
     "async_timeout>=4.0.0",
     "exceptiongroup>=1.1.0",
+    "gcloud>=0.18.3",
     "google-cloud-storage>=3.4.1",
     "google-genai>=0.1.0",
     "ml-collections>=0.1.0",
